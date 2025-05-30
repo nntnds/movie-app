@@ -53,9 +53,7 @@ class DetailScreenViewModel @Inject constructor(
 
     fun checkFavorite(id: Int) = viewModelScope.launch {
         repository.checkIsFavorite(id)
-            .collect { value ->
-                isFavorite.value = value
-            }
+            .collect { isFavorite.value = it }
     }
 
     fun addToFavorite(movieEntity: MovieEntity) = viewModelScope.launch {
