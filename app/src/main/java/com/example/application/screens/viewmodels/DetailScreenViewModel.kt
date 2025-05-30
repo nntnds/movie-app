@@ -39,7 +39,7 @@ class DetailScreenViewModel @Inject constructor(
 
     fun loadMovieDetails() = viewModelScope.launch {
         try {
-            val result = ApiClient.api.getDetailsMovieById(id = id)
+            val result = ApiClient.api.getDetailsMovieById(id)
 
             if (result.isSuccessful) {
                 result.body()?.let { details ->

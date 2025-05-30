@@ -45,6 +45,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -85,13 +86,14 @@ fun DetailScreen(
         }
     ) { innerPadding ->
         if (viewModel.movieDetails.isNotEmpty()) {
-            val movie = viewModel.movieDetails.first()
+            val details = viewModel.movieDetails.first()
 
             MovieContent(
                 innerPadding = innerPadding,
                 imageUrl = imageUrl,
                 title = title,
-                backdropPath = movie.backdropPath,
+                backdropPath = details.backdropPath,
+                overView = details.overView
             )
         }
     }
@@ -103,6 +105,7 @@ fun MovieContent(
     imageUrl: String,
     title: String,
     backdropPath: String,
+    overView: String
 ) {
     Column(
         modifier = Modifier
@@ -112,7 +115,7 @@ fun MovieContent(
     ) {
         Box(
             Modifier
-                .height(300.dp)
+                .height(320.dp)
                 .fillMaxWidth()
         ) {
             AsyncImage(
@@ -165,6 +168,14 @@ fun MovieContent(
                 fontWeight = FontWeight.Medium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+            )
+            Text(
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp, top = 10.dp)
+                    .align(Alignment.CenterHorizontally),
+                text = overView,
+                fontSize = 16.sp,
+                lineHeight = 22.sp
             )
         }
     }
