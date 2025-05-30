@@ -1,5 +1,6 @@
 package com.example.application.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,11 +29,12 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -178,8 +180,7 @@ fun topBar(
     imageUrl: String,
     viewModel: DetailScreenViewModel = hiltViewModel(),
 ) {
-    var isFavorite by remember { mutableStateOf(false) }
-
+    var isFavorite = viewModel.isFavorite
     TopAppBar(
         title = {
             Text("")
@@ -194,18 +195,17 @@ fun topBar(
         actions = {
             IconButton(
                 onClick = {
-                    isFavorite = !isFavorite
-
+                    isFavorite.value = !isFavorite.value
                     scope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
                         snackbarHostState.showSnackbar(
                             message =
-                                if (isFavorite) "Добавлено в избранное"
+                                if (isFavorite.value) "Добавлено в избранное"
                                 else "Удалено из избранного",
                             duration = SnackbarDuration.Short
                         )
                     }
-                    if (isFavorite) viewModel.addToFavorite(
+                    if (isFavorite.value) viewModel.addToFavorite(
                         movieEntity = MovieEntity(
                             id = id,
                             title = title,
@@ -220,7 +220,7 @@ fun topBar(
                     )
                 }
             ) {
-                if (isFavorite) Icon(Icons.Default.Favorite, null)
+                if (isFavorite.value) Icon(Icons.Default.Favorite, null)
                 else Icon(Icons.Default.FavoriteBorder, null)
             }
         }
