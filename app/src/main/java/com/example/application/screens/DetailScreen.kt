@@ -152,7 +152,7 @@ fun MovieContent(
                     .shadow(elevation = 10.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .size(width = 200.dp, height = 300.dp)
-                    .align(Alignment.BottomCenter)
+                    .align(Alignment.Center)
             )
         }
         Column(
