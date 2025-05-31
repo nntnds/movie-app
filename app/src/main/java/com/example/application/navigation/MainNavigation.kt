@@ -73,7 +73,7 @@ fun MainNavigation() {
                                 launchSingleTop = true
                                 restoreState = true
                             }
-                        },
+                        }
                     )
                 }
             }
