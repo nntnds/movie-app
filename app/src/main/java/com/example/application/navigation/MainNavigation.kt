@@ -21,9 +21,11 @@ import com.example.application.screens.HomeScreen
 import kotlinx.serialization.Serializable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.navigation
 import com.example.application.screens.FavoriteScreen
 
 sealed class Screen() {
@@ -45,36 +47,41 @@ sealed class Screen() {
 fun MainNavigation() {
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    val isDetailScreen =
+        navBackStackEntry?.destination?.hasRoute(Screen.Detail::class) == true
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentDestination = navBackStackEntry?.destination
+            if (!isDetailScreen) {
+                NavigationBar {
+                    NavigationBarItems.forEach { item ->
+                        val isSelected = currentDestination?.hierarchy?.any {
+                            it.hasRoute(item.route::class)
+                        } == true
 
-                NavigationBarItems.forEach { item ->
-                    val isSelected = currentDestination?.hierarchy?.any {
-                        it.hasRoute(item.route::class)
-                    } == true
-
-                    NavigationBarItem(
-                        icon = {
-                            if (isSelected) Icon(item.selectedIcon, null)
-                            else Icon(item.unSelectedIcon, null)
-                        },
-                        label = {
-                            Text(item.label)
-                        },
-                        selected = isSelected,
-                        onClick = {
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                        NavigationBarItem(
+                            icon = {
+                                if (isSelected) Icon(item.selectedIcon, null)
+                                else Icon(item.unSelectedIcon, null)
+                            },
+                            label = {
+                                Text(item.label)
+                            },
+                            selected = isSelected,
+                            onClick = {
+                                navController.navigate(item.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                        inclusive = false
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                                launchSingleTop = true
-                                restoreState = true
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
