@@ -9,10 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.application.api.ApiClient
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.application.api.models.Results
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class HomeScreenViewModel: ViewModel() {
+class HomeScreenViewModel : ViewModel() {
     var nowPlayingMovies = mutableStateListOf<Results>()
         private set
 
@@ -20,15 +21,14 @@ class HomeScreenViewModel: ViewModel() {
 
     private var pageCount = MutableStateFlow(1)
 
-    var error = mutableStateOf(false)
-        private set
+    private var error = mutableStateOf(false)
 
     init {
         loadNowPlayingMovies()
     }
 
-     fun loadNowPlayingMovies() {
-         if (isLoading.value) return
+    fun loadNowPlayingMovies() {
+        if (isLoading.value) return
 
         viewModelScope.launch {
             isLoading.value = true

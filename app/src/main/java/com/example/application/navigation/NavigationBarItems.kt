@@ -18,14 +18,14 @@ data class NavigationBarItem<T: Any>(
 val NavigationBarItems = listOf(
     NavigationBarItem(
         route = Screen.Home,
-        label = "Home",
+        label = "Главная",
         selectedIcon = Icons.Filled.Home,
         unSelectedIcon = Icons.Outlined.Home,
     ),
 
     NavigationBarItem(
         route = Screen.Favorite,
-        label = "Favorite",
+        label = "Закладки",
         selectedIcon = Icons.Filled.Favorite,
         unSelectedIcon = Icons.Outlined.FavoriteBorder,
     ),
