@@ -1,5 +1,6 @@
 package com.example.application.presentation.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -44,9 +45,11 @@ import coil3.size.Size
 import com.example.application.data.database.MovieEntity
 import com.example.application.presentation.screen.viewmodel.FavoriteScreenViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FavoriteScreen(
+    modifier: Modifier,
     viewModel: FavoriteScreenViewModel = hiltViewModel(),
     onNavigate: (Int, String, String) -> Unit,
 ) {
@@ -54,17 +57,10 @@ fun FavoriteScreen(
 
     val gridState = rememberLazyGridState()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Закладки") }
-            )
-        },
-    ) { innerPadding ->
+    Scaffold {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
-                .padding(innerPadding)
         ) {
             if (!state.favoriteMovies.isNullOrEmpty()) {
                 FavoriteMovieGrid(

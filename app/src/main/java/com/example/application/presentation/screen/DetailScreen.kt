@@ -35,6 +35,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
@@ -52,7 +54,6 @@ import com.example.application.data.database.MovieEntity
 import com.example.application.presentation.screen.viewmodel.DetailScreenViewModel
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
@@ -156,6 +157,8 @@ fun MovieContent(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
+                    .alpha(0.3f)
+                    .blur(4.dp)
             )
             Box(
                 modifier = Modifier
