@@ -1,6 +1,5 @@
 package com.example.application.presentation.navigation
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,15 +14,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.example.application.presentation.screen.DetailScreen
-import com.example.application.presentation.screen.HomeScreen
+import com.example.application.presentation.screen.detail.DetailScreen
+import com.example.application.presentation.screen.home.HomeScreen
 import kotlinx.serialization.Serializable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import com.example.application.presentation.screen.FavoriteScreen
+import com.example.application.presentation.screen.favorite.FavoriteScreen
 
 sealed class Screen() {
     @Serializable

@@ -1,4 +1,4 @@
-package com.example.application.presentation.screen.viewmodel
+package com.example.application.presentation.screen.detail
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.application.data.api.ApiClient
 import com.example.application.data.database.MovieEntity
 import com.example.application.data.repository.MovieRepository
-import com.example.application.presentation.screen.state.DetailScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,8 +21,8 @@ class DetailScreenViewModel @Inject constructor(
     private val repository: MovieRepository,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(DetailScreenState())
-    val state: StateFlow<DetailScreenState> = _state.asStateFlow()
+    private val _state = MutableStateFlow(DetailState())
+    val state: StateFlow<DetailState> = _state.asStateFlow()
 
     private val id: Int = checkNotNull(savedStateHandle["id"])
 

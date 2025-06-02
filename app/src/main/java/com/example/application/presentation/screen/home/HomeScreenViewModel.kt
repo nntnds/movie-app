@@ -1,19 +1,18 @@
-package com.example.application.presentation.screen.viewmodel
+package com.example.application.presentation.screen.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.application.data.api.ApiClient
 import kotlinx.coroutines.launch
-import com.example.application.presentation.screen.state.HomeScreenState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class HomeScreenViewModel : ViewModel() {
-    private val _state = MutableStateFlow(HomeScreenState())
-    val state: StateFlow<HomeScreenState> = _state.asStateFlow()
+    private val _state = MutableStateFlow(HomeState())
+    val state: StateFlow<HomeState> = _state.asStateFlow()
 
     init {
         loadNowPlayingMovies()
