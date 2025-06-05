@@ -33,12 +33,12 @@ import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.request.crossfade
 import coil3.size.Size
-import com.example.application.data.api.models.Results
+import com.example.application.data.api.model.MovieDto
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun HomeMovieGrid(
-    movies: List<Results>,
+    movieDtos: List<MovieDto>,
     gridState: LazyGridState,
     onNavigate: (Int, String, String) -> Unit
 ) {
@@ -52,7 +52,7 @@ fun HomeMovieGrid(
         contentPadding = PaddingValues(horizontal = 20.dp),
     ) {
         itemsIndexed(
-            items = movies,
+            items = movieDtos,
             key = { index, item ->
                 "${item.id}_$index"
             }

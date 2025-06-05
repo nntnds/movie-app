@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.application.data.api.ApiClient
 import com.example.application.data.database.MovieEntity
-import com.example.application.data.repository.MovieRepository
+import com.example.application.data.repository.MovieDataBaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailScreenViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val repository: MovieRepository,
+    private val repository: MovieDataBaseRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(DetailState())

@@ -2,7 +2,7 @@ package com.example.application.presentation.screen.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.application.data.repository.MovieRepository
+import com.example.application.data.repository.MovieDataBaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class FavoriteScreenViewModel @Inject constructor(
-    private val repository: MovieRepository
+    private val repository: MovieDataBaseRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(FavoriteState())

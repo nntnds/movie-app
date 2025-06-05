@@ -70,7 +70,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.room.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -80,34 +79,34 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.android.compiler)
 
     // Material 3 Expressive
-    implementation("androidx.compose.material3:material3:1.4.0-alpha15")
-    implementation("androidx.compose.material:material-icons-core:1.7.8")
-    implementation(("androidx.compose.material:material-icons-extended:1.7.8"))
+    implementation(libs.material.expressive)
+    implementation(libs.material.icons.core)
+    implementation(libs.material.icons.extended)
 
     // Coil
-    implementation("io.coil-kt.coil3:coil-compose:3.2.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.2.0")
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation ("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation (libs.retrofit)
+    implementation (libs.retrofit.converter.gson)
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.9.0")
+    implementation(libs.navigation)
 
     // Viewmodel Lifecycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+    implementation(libs.lifecycle.viewmodel.compose)
 
     // Room + KSP
-    implementation("androidx.room:room-runtime:2.7.1")
-    implementation("androidx.room:room-ktx:2.7.1")
-    ksp("androidx.room:room-compiler:2.7.1")
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    implementation(libs.kotlinx.coroutines.android)
 }

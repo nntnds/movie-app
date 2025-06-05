@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
-class MovieRepository @Inject constructor(
+class MovieDataBaseRepository @Inject constructor(
     private val movieDao: MovieDao
 ) {
     val allFavorite: Flow<List<MovieEntity>> = movieDao.getAllFavorites()

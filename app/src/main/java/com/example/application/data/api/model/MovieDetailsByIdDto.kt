@@ -1,10 +1,8 @@
-package com.example.application.data.api.models
+package com.example.application.data.api.model
 
-import androidx.compose.runtime.Stable
 import com.google.gson.annotations.SerializedName
 
-@Stable
-data class MovieDetailsById(
+data class MovieDetailsByIdDto(
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("overview")val overView: String,
     @SerializedName("release_date") val releaseDate: String,

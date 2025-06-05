@@ -1,9 +1,8 @@
 package com.example.application.data.api
 
 import com.example.application.BuildConfig
-import com.example.application.data.api.models.MovieDetailsById
-import com.example.application.data.api.models.NowPlayingMovies
-import retrofit2.Response
+import com.example.application.data.api.model.MovieDetailsByIdDto
+import com.example.application.data.api.model.NowPlayingMoviesApiDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -15,13 +14,13 @@ interface ApiService {
     suspend fun getNowPlayingMovies(
         @Query("page") page: Int,
         @Query("language") language: String = "ru",
-    ): Response<NowPlayingMovies>
+    ): NowPlayingMoviesApiDto
 
     @Headers("Authorization: Bearer ${BuildConfig.API_KEY}")
     @GET("movie/{id}")
     suspend fun getDetailsMovieById(
         @Path("id") id: Int,
         @Query("language") language: String = "ru",
-    ): Response<MovieDetailsById>
+    ): MovieDetailsByIdDto
 }
 
