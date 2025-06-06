@@ -1,8 +1,8 @@
 package com.example.application.data.api
 
 import com.example.application.BuildConfig
-import com.example.application.data.api.model.MovieDetailsByIdDto
-import com.example.application.data.api.model.NowPlayingMoviesApiDto
+import com.example.application.data.model.MovieDetailsByIdDto
+import com.example.application.data.model.NowPlayingMoviesApiDto
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path

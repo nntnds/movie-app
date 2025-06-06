@@ -1,11 +1,11 @@
 package com.example.application.data.repository.mapper
 
-import com.example.application.data.api.model.NowPlayingMoviesApiDto
-import com.example.application.data.api.model.ResultApiDto
+import com.example.application.data.model.NowPlayingMoviesApiDto
+import com.example.application.data.model.ResultApiDto
 import com.example.application.domain.model.NowPlayingMovies
 import com.example.application.domain.model.Results
 
-object MovieMapper {
+object NowPlayingMoviesMapper {
     fun NowPlayingMoviesApiDto.toDomain(): NowPlayingMovies {
         return NowPlayingMovies(
             results = this.results.map { it.toDomain() }

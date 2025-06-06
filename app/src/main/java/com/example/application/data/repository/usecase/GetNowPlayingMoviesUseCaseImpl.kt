@@ -7,7 +7,6 @@ import com.example.application.domain.usecase.GetNowPlayingMoviesUseCase
 class GetNowPlayingMoviesUseCaseImpl(
     private val repository: NowPlayingRepository
 ) : GetNowPlayingMoviesUseCase {
-
     override suspend fun execute(page: Int): Result<NowPlayingMovies> {
         return repository.getNowPlayingMovies(page)
     }
